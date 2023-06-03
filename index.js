@@ -43,22 +43,20 @@ async function start() {
         process.exit();
       }
     }
-// THE COMPUTER THE COMPUTER GUESSED
+// THE COMPUTER THE COMPUTER WON
       if (humanHint === "y") {
         console.log("Congratulations! You got it!!");
-        
+        process.exit();
       }
 
-// THE COMPUTER DIDN'T GUESS
+// THE COMPUTER GUESSED WRONG
       else {
 
         humanHint = await ask("Is it higher (h), or lower (l)?\n");
 
 // Change of the range
         humanHint === "h" ? min = computerGuess + 1 : max = computerGuess - 1;
-
       }
-    
   }
 
   process.exit();
