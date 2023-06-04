@@ -27,6 +27,11 @@ To play game1 insert g1, for game2 insert g2\n `);
       //------------------------------------------------------------------------------------------------------
       console.log("Let's play a game where you (human) make up a number and I (computer) try to guess it.")
       let secretNumber = await ask("What is your secret number?\nI won't peek, I promise...\n");
+      // ! INVALID INPUT ERROR
+      while (isNaN(secretNumber)) {
+      console.log("ERROR, please insert a number");
+      secretNumber= await ask("What is your secret number?\n");
+      }
       console.log('You entered: ' + secretNumber);
 
 
@@ -35,6 +40,11 @@ To play game1 insert g1, for game2 insert g2\n `);
       let min = 1;
       let max = await ask("Please choose the high range: ");
       max = parseInt(max);
+      // ! INVALID INPUT ERROR
+      while (isNaN(max)) {
+        console.log("ERROR, please insert a number");
+        max = await ask("What is your secret number?\n");
+        }
       console.log(`I see. So you picked a number in between 1 and ${max}... what could it be?`);
 
       // WHILE LOOP
@@ -44,13 +54,13 @@ To play game1 insert g1, for game2 insert g2\n `);
         computerGuess = Math.floor((Math.random() * (max - min + 1) + min));
         humanHint = await ask(`Is it ${computerGuess}? y/n \n`);
 
-        // CHECK FOR THE CORRECT COMMAND
+        //! CHECK FOR THE CORRECT COMMAND
         if (humanHint !== "y" && humanHint !== "n") {
-          console.log("ERROR");
+          console.log("ERROR, invalid input\n");
 
           while (humanHint !== "y" && humanHint !== "n") {
-            humanHint = await ask("Invalid input. Try again\n");
-            process.exit();
+            humanHint = await ask("Try again\n");
+            
           }
         }
         // THE COMPUTER THE COMPUTER WON
@@ -66,6 +76,11 @@ To play game1 insert g1, for game2 insert g2\n `);
         else {
 
           humanHint = await ask("Is it higher (h), or lower (l)?\n");
+          // ! INVALID INPUT ERROR
+          if (isNaN(humanHint)) {
+            console.log("Invalid input. Try again\n");
+            humanHint = await ask("Is it higher (h), or lower (l)?\n");
+          }
 
           // Change of the range
           humanHint === "h" ? min = computerGuess + 1 : max = computerGuess - 1;
@@ -134,6 +149,7 @@ To play game1 insert g1, for game2 insert g2\n `);
     }
 
     else {
+      // ! INVALID INPUT ERROR
       console.log("ERROR. Please select g1 or g2");
       gameChoice = await ask("To play game1 insert g1, for game2 insert g2\n");
     }
