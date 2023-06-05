@@ -51,7 +51,7 @@ To play game1 insert g1, for game2 insert g2\n `);
       // will have the computer generate its guess until the guess matches the secret number;
       while (computerGuess !== secretNumber) {
         // With this formula the computer generates a random number, in the range indicated by the user.
-        computerGuess = Math.floor((Math.random() * (max - min + 1) + min));
+        computerGuess = Math.floor((Math.random() * (max - min +1) + min));
         humanHint = await ask(`Is it ${computerGuess}? y/n \n`);
 
         //! CHECK FOR THE CORRECT COMMAND
@@ -63,7 +63,7 @@ To play game1 insert g1, for game2 insert g2\n `);
             
           }
         }
-        // THE COMPUTER THE COMPUTER WON
+        // LET THE COMPUTER WIN
         if (humanHint === "y") {
           console.log("You Won!!");
           let playAgain = await ask("Do you want to play another game? Answer y or n: ");
@@ -77,7 +77,7 @@ To play game1 insert g1, for game2 insert g2\n `);
 
           humanHint = await ask("Is it higher (h), or lower (l)?\n");
           // ! INVALID INPUT ERROR
-          if (isNaN(humanHint)) {
+          if (humanHint !== "h" && humanHint !== "l") {
             console.log("Invalid input. Try again\n");
             humanHint = await ask("Is it higher (h), or lower (l)?\n");
           }
