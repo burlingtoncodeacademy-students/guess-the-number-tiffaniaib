@@ -16,9 +16,6 @@ GAME 1: you think of a number and I (the computer) try to guess it.
 GAME 2: I (the computer) pick a number, and you have to guess it.
 To play game1 insert g1, for game2 insert g2\n `);
 
-
-
-
   while (true) {
     if (gameChoice === "g1") {
       let computerGuess = null;
@@ -91,10 +88,8 @@ To play game1 insert g1, for game2 insert g2\n `);
     }
 
     else if (gameChoice === "g2") {
-      // VARIABLE TO KEEP TRACK OF COMPUTER'S GUESS
-      let numberOfGuesses = 0;
-      // VARIABLE TO STORE THE PLAYER'S GUESS
-      let playerGuess = null;
+      let numberOfGuesses = 0;  
+      let playerGuess = null;  
 
       //-------------------------------------------------------------------
       let min = await ask("Insert low range: ");
