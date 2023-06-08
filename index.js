@@ -65,7 +65,7 @@ To play game1 insert g1, for game2 insert g2\n `);
         }
         // LET THE COMPUTER WIN
         if (humanHint === "y") {
-          console.log("You Won!!");
+          console.log(`Yes!! My number was ${computerGuess}`);
           let playAgain = await ask("Do you want to play another game? Answer y or n: ");
           // let y = true;
           // let n = false;
@@ -110,7 +110,7 @@ To play game1 insert g1, for game2 insert g2\n `);
 
       while (playerGuess !== secretNumber) {
 
-        playerGuess = await ask("What's your guess? ");
+        playerGuess = await ask("What's your guess?\n");
         playerGuess = parseInt(playerGuess);
 
         if (playerGuess < min || playerGuess > max) {
@@ -131,6 +131,10 @@ To play game1 insert g1, for game2 insert g2\n `);
           numberOfGuesses++
 
         }
+
+        else if  (isNaN(playerGuess)) {
+          console.log("ERROR, please insert a number");
+          }
 
         else {
           console.log("CONGRATULATIONS!!! You won!");
